@@ -14,27 +14,34 @@ Make sure you have the following installed on your machine:
 
 ## Getting Started
 
-### 1. Install Bun
+### 1. Clone the repository
+If you're not using a local copy, you can clone the repository from GitHub:
+```bash
+git clone https://github.com/ahmadnasriya/mystore.git
+cd mystore
+```
+
+### 2. Install Bun
 ```bash
 npm install -g bun
 ```
 This is used to run internal scripts.
 
-### 2. Initialize the project & install dependencies
+### 3. Initialize the project & install dependencies
 ```bash
 npm run init
 ```
 
-### 3. Configure the project
+### 4. Configure the project
 Edit the configs.ts file with your desired configurations (database, ports, credentials, etc.).
 
-### 4. Generate environment variables
+### 5. Generate environment variables
 ```bash
 npm run build:env
 ```
 This will generate the `.env` files based on your configurations.
 
-### 5. Build the database container (Optional)
+### 6. Build the database container (Optional)
 ```bash
 npm run build:container
 ```
