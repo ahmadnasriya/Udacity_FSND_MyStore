@@ -1,0 +1,20 @@
+{
+  "name": "my-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "npm run clone && npm run install",
+    "clone": "bun run scripts/clone.ts",
+    "install": "bun run scripts/install-dependencies.ts",
+    "build:container": "bun run scripts/build-container.ts",
+    "build:env": "bun run scripts/build-env.ts"
+  },
+  "keywords": [],
+  "author": "Ahmad Nasriya",
+  "license": "Only for preview",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^24.5.1"
+  }
+}
