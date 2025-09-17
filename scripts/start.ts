@@ -1,4 +1,4 @@
-import { ChildProcess, spawn } from 'child_process';
+import { ChildProcess, spawn, exec } from 'child_process';
 import path from 'path';
 import configs from '../configs';
 
@@ -82,6 +82,24 @@ const frontend = new ServerProcess({
     cmd: `ng serve --port ${configs.frontend.port}`
 })
 
+const consoleX = {
+    logs: [] as string[],
+    log(log: string) {
+        this.logs.push(log);
+        console.log(log);
+    },
+    clear() {
+        console.clear();
+        for (const log of this.logs) {
+            console.log(log);
+        }
+    },
+    reset() {
+        this.logs = [];
+        console.clear();
+    }
+}
+
 async function start() {
     const onError = (error: Error) => {
         console.error(error);
@@ -92,16 +110,41 @@ async function start() {
     frontendEnv.process?.on('error', onError);
     frontend.process?.on('error', onError);
 
+    consoleX.log('⏳ Starting backend process...');
     await backend.start();
-    console.clear();
-    console.log('✅ Backend process started');
-    
-    await frontendEnv.start();
-    console.log('✅ Environment prepared');
+    consoleX.clear();
+    consoleX.log('✅ Backend process started');
 
+    consoleX.log('⏳ Preparing frontend environment...');
+    await frontendEnv.start();
+    consoleX.log('✅ Environment prepared');
+
+    consoleX.log('⏳ Starting frontend process...');
+    consoleX.log('- Please wait until the page automatically opens');
     await frontend.start();
-    console.log('✅ Frontend process started');
+    consoleX.log('✅ Frontend process started');
+}
+
+function afterStart() {
+    consoleX.reset();
+    console.log('✅ All processes started');
+
+    const appUrl = `http://localhost:${configs.frontend.port}`;
+    console.log(`🌍 Accessible via ${appUrl}`);
+
+    const openUrl = (url: string) => {
+        const platform = process.platform;
+        if (platform === "win32") {
+            exec(`start ${url}`);
+        } else if (platform === "darwin") {
+            exec(`open ${url}`);
+        } else {
+            exec(`xdg-open ${url}`);
+        }
+    }
+
+    openUrl(appUrl);
 }
 
 
-await start();
+await start().then(() => afterStart());
