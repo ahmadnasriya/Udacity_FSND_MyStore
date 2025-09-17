@@ -110,19 +110,21 @@ async function start() {
     frontendEnv.process?.on('error', onError);
     frontend.process?.on('error', onError);
 
-    consoleX.log('⏳ Starting backend process...');
+    console.log('⏳ Starting backend process...');
     await backend.start();
     consoleX.clear();
     consoleX.log('✅ Backend process started');
 
-    consoleX.log('⏳ Preparing frontend environment...');
+    console.log('⏳ Preparing frontend environment...');
     await frontendEnv.start();
+    consoleX.clear();
     consoleX.log('✅ Environment prepared');
 
-    consoleX.log('⏳ Starting frontend process...');
-    consoleX.log('- Please wait until the page automatically opens');
+    console.log('⏳ Starting frontend process...');
+    console.log('- Please wait until the page automatically opens');
     await frontend.start();
     consoleX.log('✅ Frontend process started');
+    consoleX.clear();
 }
 
 function afterStart() {
