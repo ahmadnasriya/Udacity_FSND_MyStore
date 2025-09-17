@@ -28,17 +28,19 @@ npm run init
 ### 3. Configure the project
 Edit the configs.ts file with your desired configurations (database, ports, credentials, etc.).
 
-### 4. Build the database container
+### 4. Generate environment variables
+```bash
+npm run build:env
+```
+This will generate the `.env` files based on your configurations.
+
+### 5. Build the database container (Optional)
 ```bash
 npm run build:container
 ```
 This will pull the required Docker image and create a container using the configurations from [step 3](#3-configure-the-project).
 
-### 5. Generate environment variables
-```bash
-npm run build:env
-```
-This will generate the `.env` files based on your configurations.
+
 
 ---
 
