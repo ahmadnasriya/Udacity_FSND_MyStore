@@ -30,7 +30,7 @@ function clone(repoName: string, target: string) {
 await clean();
 
 for (const end of ['backend', 'frontend']) {
-    const code = await clone(`mystore_${end}`, end);
+    const code = await clone(`Udacity_FSND_MyStore_${end}`, end);
     if (code !== 0) {
         throw new Error(`Failed to clone mystore_${end}`);
     }
