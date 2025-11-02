@@ -79,7 +79,7 @@ Make sure you have the following installed on your machine:
 ### 1. Clone the repository (Optional)
 If you're not using a local copy, you can clone the repository from GitHub:
 ```bash
-git clone https://github.com/ahmadnasriya/mystore.git
+git clone https://github.com/ahmadnasriya/Udacity_FSND_MyStore.git
 cd mystore
 ```
 
