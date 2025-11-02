@@ -80,7 +80,7 @@ Make sure you have the following installed on your machine:
 If you're not using a local copy, you can clone the repository from GitHub:
 ```bash
 git clone https://github.com/ahmadnasriya/Udacity_FSND_MyStore.git
-cd mystore
+cd Udacity_FSND_MyStore
 ```
 
 ### 2. Install Bun
